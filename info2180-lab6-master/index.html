@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<button id="myBtn">Search</button>
+
+
+<script>
+document.getElementById("myBtn").addEventListener("click", d);
+
+function d() {
+    //alert("hi");
+    //document.getElementById("demo").innerHTML = Date();
+     var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                //alert("kim");
+                alert(this.response);
+            }
+        };
+        //alert("fire");
+        xmlhttp.open("GET", 'request.php/request.php?q=definition');
+        xmlhttp.send();
+}
+</script>
+
+</body>
+</html> 
