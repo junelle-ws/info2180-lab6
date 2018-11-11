@@ -4,7 +4,9 @@
 
 
 
-<button id="myBtn">Search</button>
+ <input id="myText" type="text">
+ <button id="myBtn">Search</button>
+ <div id ="result"> </div>
 
 
 <script>
@@ -13,15 +15,18 @@ document.getElementById("myBtn").addEventListener("click", d);
 function d() {
     //alert("hi");
     //document.getElementById("demo").innerHTML = Date();
-     var xmlhttp = new XMLHttpRequest();
+    let myText =document.getElementById("myText").value.toString();
+    //alert('request.php/request.php?q='+myText);
+    var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 //alert("kim");
-                alert(this.response);
+                //alert(this.response);
+                 document.getElementById("result").innerHTML = this.responseText;
             }
         };
         //alert("fire");
-        xmlhttp.open("GET", 'request.php/request.php?q=definition');
+        xmlhttp.open("GET", 'request.php/request.php?q='+myText);
         xmlhttp.send();
 }
 </script>
