@@ -1,35 +1,81 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+<div class="header">
+  <h1>Web Dictionary</h1>
+</div>
 
 
  <input id="myText" type="text">
  <button id="myBtn">Search</button>
+ <button id="myBtn1">Find all definitions </button>
  <div id ="result"> </div>
 
 
 <script>
 document.getElementById("myBtn").addEventListener("click", d);
-
+document.getElementById("myBtn1").addEventListener("click",all);
 function d() {
-    //alert("hi");
-    //document.getElementById("demo").innerHTML = Date();
+   
     let myText =document.getElementById("myText").value.toString();
-    //alert('request.php/request.php?q='+myText);
+    
+   
     var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                //alert("kim");
-                //alert(this.response);
+        
                  document.getElementById("result").innerHTML = this.responseText;
             }
         };
-        //alert("fire");
         xmlhttp.open("GET", 'request.php/request.php?q='+myText);
         xmlhttp.send();
 }
+function all(){
+    var resultcont = document.getElementById("result");
+    var httpRequest = new XMLHttpRequest();
+    //alert("hi");
+     httpRequest.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                //alert("/kim");
+                  var xmlDoc = httpRequest.responseText;
+                 // alert(xmlDoc);
+                  document.getElementById("result").innerHTML=xmlDoc;
+                //document.getElementById("result").innerHTML = this.responseText;
+            }
+        };
+  
+		//alert("kim")
+        var url ='request.php?q=&all=true';
+        httpRequest.open("GET", url);
+        httpRequest.send();
+}
+function myfunction(xml){
+    alert("hi");
+    
+}
+
+
+
 </script>
 
 </body>
+<style>
+/* Style the body */
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 20px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+}
+
+/* Page Content */
+.content {padding:20px;}
+</style>
 </html> 
